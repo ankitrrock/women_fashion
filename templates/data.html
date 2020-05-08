@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>user data</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    hello<br>
+    {% for i in event_list %}
+    name = {{ i.u_name}}<br>
+    email = {{i.u_email}}
+
+    {% endfor %}
+    hello<br>
+    {% for ab in skirts_list %}
+    skirts_name = {{ ab.skirts_name}}<br>
+    skirts_price = {{ab.skirts_price}}
+
+    {% endfor %}
+    
+</body>
+</html>

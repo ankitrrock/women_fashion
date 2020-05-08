@@ -1,0 +1,251 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+<title>home  </title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Women's Fashion Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/fasthover.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- //js -->
+<!-- countdown -->
+<link rel="stylesheet" href="{% static 'css/jquery.countdown.css' %}" />
+<!-- //countdown -->
+<!-- cart -->
+<script src="{% static 'js/simpleCart.min.js' %}"></script>
+<!-- cart -->
+<!-- for bootstrap working -->
+<script type="text/javascript" src="{% static 'js/bootstrap-3.1.1.min.js' %}"></script>
+<link href="{% static '//fonts.googleapis.com/css?family=Glegoo:400,700' %}" rel='stylesheet' type='text/css'>
+<link href="{% static '//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' %}" rel='stylesheet' type='text/css'>
+<!-- //for bootstrap working -->
+<!-- cart -->
+<script src="{% static 'js/simpleCart.min.js' %}"></script>
+<!-- cart -->
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+	function isPasswordMatch() {
+		var password = $("#txtNewPassword").val();
+		var confirmPassword = $("#txtConfirmPassword").val();
+	
+		if (password != confirmPassword) $("#divCheckPassword").html("Passwords do not match!");
+		else $("#divCheckPassword").html("Passwords match.");
+	}
+	
+	$(document).ready(function () {
+		$("#txtConfirmPassword").keyup(isPasswordMatch);
+	});
+	
+</script>
+<!-- //end-smooth-scrolling -->
+
+</head>
+	
+<body>
+<!-- header -->
+	<div class="header">
+		<div class="container">
+			<div class="w3l_login">
+				<a href="" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+				<p>{{request.user|title }}</p>
+			    
+			</div>
+			<div class="w3l_logo">
+				<h1><a href="{% url 'index' %}">The Central Mart<span>For Fashion Lovers</span></a></h1>
+			</div>
+			<div class="search">
+				<input class="search_box" type="checkbox" id="search_box">
+				<label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+				<div class="search_form">
+					<form action="#" method="post">
+						<input type="text" name="Search" placeholder="Search...">
+						<input type="submit" value="Send">
+					</form>
+				</div>
+			</div>
+			<div class="cart box_1">
+				<a href="{% url 'checkout' %}">
+					<div class="total">
+					<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>	
+				</a>
+			</div>
+			<br>
+			<div class="cart box_1">
+				<a href="{% url 'checkout' %}">
+					<div class="total">
+					<span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+				<div class="clearfix"> </div>
+			</div>
+			
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<div class="navigation">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header nav_2">
+					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div> 
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="{% url 'index' %}" class="act">Home</a></li>	
+						<!-- Mega Menu -->
+						<li class="dropdown">
+							<a href="{% url 'products' %}" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-3">
+										<ul class="multi-column-dropdown">
+											<h6>Clothing</h6>
+											<li><a href="{% url 'dresses' %}">Dresses<span>New</span></a></li>
+											<li><a href="{% url 'sweaters' %}">Sweaters</a></li>
+											<li><a href="{% url 'skirts' %}">Shorts & Skirts</a></li>
+											<li><a href="{% url 'jeans' %}">Jeans</a></li>
+											<li><a href="{% url 'shirts' %}">Shirts & Tops<span>New</span></a></li>
+										</ul>
+									</div>
+									<div class="col-sm-3">
+										<ul class="multi-column-dropdown">
+											<h6>Ethnic Wear</h6>
+											<li><a href="{% url 'salwars' %}">Salwars</a></li>
+											<li><a href="{% url 'sarees' %}">Sarees<span>New</span></a></li>
+											<li><a href="{% url 'products' %}"><i>Summer Store</i></a></li>
+										</ul>
+									</div>
+									<div class="col-sm-2">
+										<ul class="multi-column-dropdown">
+											<h6>Foot Wear</h6>
+											<li><a href="{% url 'sandals' %}">Flats</a></li>
+											<li><a href="{% url 'sandals' %}">Sandals</a></li>
+											<li><a href="{% url 'sandals' %}">Boots</a></li>
+											<li><a href="{% url 'sandals' %}">Heels</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<div class="w3ls_products_pos">
+											<h4>50%<i>Off/-</i></h4>
+											<img src="{% static 'images/1.jpg' %}" alt=" " class="img-responsive" />
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+						</li>
+						<li><a href="{% url 'about' %}">About Us</a></li>
+						<li><a href="">Short Codes</a></li>
+						<li><a href="{% url 'mail' %}">Mail Us</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+<!-- //header -->
+{% block content %}
+
+
+{% endblock content %}
+<!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
+			<div class="col-md-6 w3agile_newsletter_left">
+				<h3>Newsletter</h3>
+				<p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
+			</div>
+			<div class="col-md-6 w3agile_newsletter_right">
+				<form action="#" method="post">
+					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<input type="submit" value="">
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //newsletter -->
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="w3_footer_grids">
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Contact</h3>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+					<ul class="address">
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>Bihar.</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Information</h3>
+					<ul class="info"> 
+						<li><a href="{% url 'about' %}">About Us</a></li>
+						<li><a href="{% url 'mail' %}">Contact Us</a></li>
+						<li><a href="">Short Codes</a></li>
+						<li><a href="{% url 'faq' %}">FAQ's</a></li>
+						<li><a href="{% url 'products' %}">Special Products</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Category</h3>
+					<ul class="info"> 
+						<li><a href="{% url 'dresses' %}">Dresses</a></li>
+						<li><a href="{% url 'sweaters' %}">Sweaters</a></li>
+						<li><a href="{% url 'shirts' %}">Shirts</a></li>
+						<li><a href="{% url 'sarees' %}">Sarees</a></li>
+						<li><a href="{% url 'skirts' %}">Shorts & Skirts</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Profile</h3>
+					<ul class="info"> 
+						<li><a href="{% url 'products' %}">Summer Store</a></li>
+						<li><a href="{% url 'checkout' %}">My Cart</a></li>
+					</ul>
+					<h4>Follow Us</h4>
+					<div class="agileits_social_button">
+						<ul>
+							<li><a href="" class="facebook"> </a></li>
+							<li><a href="" class="twitter"> </a></li>
+							<li><a href="" class="google"> </a></li>
+							<li><a href="" class="pinterest"> </a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="footer-copy">
+			<div class="footer-copy1">
+				<div class="footer-copy-pos">
+					<a href="" class="scroll"><img src="{% static 'images/arrow.png' %}" alt=" " class="img-responsive" /></a>
+				</div>
+			</div>
+			<div class="container">
+				<p>&copy; 2019 The Central Mart. All rights reserved | Design by <a href="">Akash Kumar</a></p>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+</body>
+
+</html>
