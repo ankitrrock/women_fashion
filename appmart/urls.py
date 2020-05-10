@@ -4,9 +4,9 @@ from appmart import views as app
 
 urlpatterns = [
 	path('', app.index, name="index"),
-	path('register/', app.registerPage, name="register"),
-	path('login/', app.loginPage, name="login"),  
-	path('logout/', app.logoutUser, name="logout"),
+	path('registerPage/', app.registerPage, name="registerPage"),
+	path('loginPage/', app.loginPage, name="loginPage"),
+	path('logout_django/', app.logout_django, name="logout_django"),
 	path('about', app.about, name="about"),
 	path('checkout', app.checkout, name="checkout"),
 	path('dresses', app.dresses, name="dresses"),
@@ -22,6 +22,7 @@ urlpatterns = [
 	path('single', app.single, name="single"),
 	path('skirts', app.skirts, name="skirts"),
 	path('sweaters', app.sweaters, name="sweaters"),
+
 
 
 ]
