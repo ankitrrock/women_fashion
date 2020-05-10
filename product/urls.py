@@ -3,11 +3,11 @@ from product import views as pt
 
 
 urlpatterns = [
-    path('register/', pt.registerPage, name="register"),
-	path('login/', pt.loginPage, name="login_data"),  
-	path('logout/', pt.logout, name="logout"),
-    path("",pt.main,name='main'),
-    path("products/",pt.products,name='products'),
+    path('registerPage/', pt.registerPage, name="registerPage"),
+    path('loginPage/', pt.loginPage, name="login_Page"),
+    path('logoutUser/', pt.logoutUser, name="logoutUser"),
+    path("", pt.main, name='main'),
+    path("product/", pt.product, name='product'),
     path('customer/', pt.customer, name="customer"),
     path('create_order/', pt.createOrder, name="create_order"),
     path('update_order/', pt.updateOrder, name="update_order"),
