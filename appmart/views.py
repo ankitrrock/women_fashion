@@ -125,4 +125,8 @@ def skirts (request):
 def sweaters (request):
 	return render(request,'sweaters.html')
 
+@login_required(login_url='loginPage')
+def ankit(request):
+	return render(request,'sweaters.html')
+
 
