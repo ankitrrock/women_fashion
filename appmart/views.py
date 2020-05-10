@@ -48,7 +48,6 @@ def logoutUser(request):
 	logout(request)
 	return redirect('login')
 
-
 @login_required(login_url='login')
 def index(request):
 	return render(request,'index.html')

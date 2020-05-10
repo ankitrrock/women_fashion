@@ -4,7 +4,7 @@ from product import views as pt
 
 urlpatterns = [
     path('register/', pt.registerPage, name="register"),
-	path('login/', pt.loginPage, name="login"),  
+	path('login/', pt.loginPage, name="login_data"),  
 	path('logout/', pt.logout, name="logout"),
     path("",pt.main,name='main'),
     path("products/",pt.products,name='products'),

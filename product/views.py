@@ -49,26 +49,26 @@ def loginPage(request):
 def logoutUser(request):
 	logout(request)
 	return redirect('login')
-
+@login_required(login_url='login_data')
 def main(request):
     
     return render(request,"dashboard.html")
-
+@login_required(login_url='login')
 def products(request):
        
     return render(request,"product.html")
-
+@login_required(login_url='login')
 def customer(request):
    
     return render(request,"customer.html")
-
+@login_required(login_url='login')
 def createOrder(request):
 	return render(request, 'orderform.html')
-
+@login_required(login_url='login')
 def updateOrder(request):
 
 	return render(request, 'orderform.html')
-
+@login_required(login_url='login')
 def deleteOrder(request):
 	
 	return render(request, 'delete.html')
