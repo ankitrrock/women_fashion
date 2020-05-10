@@ -75,7 +75,7 @@
 				</div>
 				<div class="d-flex justify-content-center form_container">
 
-					<form method="POST" action="{% url 'register' %}">
+					<form method="POST" action="{% url 'registerPage' %}">
 						{% csrf_token %}
 						<div class="input-group mb-3">
 							<div class="input-group-append">
@@ -115,7 +115,7 @@
 				
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+						Already have an account? <a href="{% url 'login_Page' %}" class="ml-2">Login</a>
 					</div>
 				</div>
 			</div>

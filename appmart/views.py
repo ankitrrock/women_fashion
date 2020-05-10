@@ -9,7 +9,7 @@ from .forms import CreateUserForm
 
 def registerPage(request):
 	if request.user.is_authenticated:
-		return redirect('home')
+		return redirect('index')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -19,11 +19,10 @@ def registerPage(request):
 				user = form.cleaned_data.get('username')
 				messages.success(request, 'Account was created for ' + user)
 
-				return redirect('login')
-			
+				return redirect('loginPage')
 
-		context = {'form':form}
-		return render(request, 'register.html', context)
+	context = {'form': form}
+	return render(request, 'registerPage', context)
 
 def loginPage(request):
 	if request.user.is_authenticated:
@@ -41,88 +40,88 @@ def loginPage(request):
 			else:
 				messages.info(request, 'Username OR password is incorrect')
 
-		context = {}
-		return render(request, 'login.html', context)
+	context = {}
+	return render(request, 'login.html', context)
 
-def logoutUser(request):
+def logout_django(request):
 	logout(request)
-	return redirect('login')
+	return redirect('loginPage')
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def index(request):
 	return render(request,'index.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def about(request):
 	return render(request,'about.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def checkout(request):
 	return render(request,'checkout.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def dresses(request):
 	return render(request,'dresses.html')
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def faq(request):
 	return render(request,'faq.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def jeans(request):
 	return render(request,'jeans.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def mail(request):
 	return render(request,'mail.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def products(request):
 	return render(request,'products.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def salwars(request):
 	return render(request,'salwars.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def sandals(request):
 	return render(request,'sandals.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def sarees(request):
 	return render(request,'sarees.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def shirts(request):
 	return render(request,'shirts.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def shirtcodes(request):
 	return render(request,'shirtcodes.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def single(request):
 	return render(request,'single.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def skirts (request):
 	return render(request,'skirts.html')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 def sweaters (request):
 	return render(request,'sweaters.html')
 
