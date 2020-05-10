@@ -22,7 +22,7 @@ urlpatterns = [
 	path('single', app.single, name="single"),
 	path('skirts', app.skirts, name="skirts"),
 	path('sweaters', app.sweaters, name="sweaters"),
-	path('ankit', app.ankit, name="ankit"),
+
 
 
 ]
