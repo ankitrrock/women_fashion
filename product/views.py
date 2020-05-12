@@ -1,6 +1,4 @@
-from django.shortcuts import render, redirect 
-from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -22,7 +20,7 @@ def registerPage(request):
 				return redirect('loginPage')
 			
 	context = {'form': form}
-	return render(request, 'registerPage', context)
+	return render(request, 'register.html', context)
 
 def loginPage(request):
 	if request.user.is_authenticated:
@@ -30,7 +28,7 @@ def loginPage(request):
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
-			password =request.POST.get('password')
+			password = request.POST.get('password')
 
 			user = authenticate(request, username=username, password=password)
 
@@ -40,7 +38,7 @@ def loginPage(request):
 			else:
 				messages.info(request, 'Username OR password is incorrect')
 	context = {}
-	return render(request, 'login.html',context)
+	return render(request, 'login.html', context)
 
 def logoutUser(request):
 	logout(request)
@@ -52,7 +50,7 @@ def main(request):
 
 @login_required(login_url='loginPage')
 def product(request):
-	return render(request,"product.html")
+	return render(request, "product.html")
 
 @login_required(login_url='loginPage')
 def customer(request):

@@ -22,7 +22,7 @@ def registerPage(request):
 				return redirect('loginPage')
 
 	context = {'form': form}
-	return render(request, 'registerPage', context)
+	return render(request, 'register.html', context)
 
 def loginPage(request):
 	if request.user.is_authenticated:
