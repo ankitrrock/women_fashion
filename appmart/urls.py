@@ -2,6 +2,7 @@ from django.urls import path
 from appmart import views as app
 
 
+
 urlpatterns = [
 	path('', app.index, name="index"),
 	path('registerPage/', app.registerPage, name="registerPage"),
