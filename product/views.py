@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from appmart.forms import CreateUserForm
+from product.forms import TagForm, ColorForm, SizeForm, ProductForm
+
 
 
 def registerPage(request):
@@ -48,9 +50,43 @@ def logoutUser(request):
 def main(request):
 	return render(request, "dashboard.html")
 
+
+# noinspection SpellCheckingInspection
 @login_required(login_url='loginPage')
 def product(request):
-	return render(request, "product.html")
+	tagform = TagForm()
+	colorform = ColorForm()
+	sizeform = SizeForm()
+	productform = ProductForm()
+	if request.method == 'POST':
+		tagform = TagForm(request.POST)
+		colorform = ColorForm(request.POST)
+		sizeform = SizeForm(request.POST)
+		productform = ProductForm(request.POST)
+		if tagform.is_valid():
+			tagform.save()
+			tag = tagform.cleaned_data.get('tag')
+			messages.success(request, 'successfully added ')
+			return redirect('product')
+
+		elif colorform.is_valid():
+			colorform.save()
+			color = colorform.cleaned_data.get('color')
+			messages.success(request, 'color successfully added')
+			return redirect('product')
+		elif sizeform.is_valid():
+			sizeform.save()
+			size = sizeform.cleaned_data.get('size')
+			messages.success(request, 'size successfully added')
+			return redirect('product')
+		elif productform.is_valid():
+			productform.save()
+			productform = productform.cleaned_data.get('product')
+			messages.success(request, 'product successfully added')
+			return redirect('product')
+	context = {'tagform': tagform, 'colorform': sizeform, 'sizeform': sizeform, 'productform': productform}
+	return render(request, "product", context)
+
 
 @login_required(login_url='loginPage')
 def customer(request):

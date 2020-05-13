@@ -1,78 +1,110 @@
 {%  extends 'main.html' %}
 
 {% block content %}
-
 <br>
 
-<div class="row">
-    <div class="col-md">
-        <div class="card card-body">
-            <h5>Products</h5>
-            <hr>
-            <a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
-            <a class="btn btn-outline-info  btn-sm btn-block" href="">Place Order</a>
-
-        </div>
-    </div>
-
-    <div class="col-md">
-        <div class="card card-body">
-            <h5>Contact Information</h5>
-            <hr>
-            <p>Email:</p>
-            <p>Phone:</p>
-        </div>
-    </div>
-
-    <div class="col-md">
-        <div class="card card-body">
-            <h5>Total Orders</h5>
-            <hr>
-            <h1 style="text-align: center;padding: 10px"></h1>
-        </div>
+<!-- Add Product Button trigger modal -->
+<div class="container">
+    <div class="raw">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addtag">
+      <h4>Product Type</h4>
+    </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsize">
+      <h4>Product Color</h4>
+    </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcolor">
+      <h4>Product Size</h4>
+    </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addproduct">
+      <h4>Add Product</h4>
+    </button>
     </div>
 </div>
+<!-- End Add Product Button trigger modal -->
 
-
-<br>
-<div class="row">
-    <div class="col">
-        <div class="card card-body">
-
-            <form method="get">
-
-                <button class="btn btn-primary" type="submit">Search</button>
-            </form>
-
-        </div>
+<!-- Add Product Modal -->
+<div class="modal fade" id="addtag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Product Type</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="{% url 'product' %}">
+              {% csrf_token %}
+              {{tagform}}
+                  <input type="submit" value="submit">
+          </form>
+      </div>
     </div>
-
+  </div>
 </div>
-<br>
-
-<div class="row">
-    <div class="col-md">
-        <div class="card card-body">
-            <table class="table">
-                <tr>
-                    <th>Product</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                </tr>
-
-                {% for i in products_data %}
-                <tr>
-                    <td>{{i.name}}</td>
-                    <td>{{i.category}}</td>
-                    <td>{{i.price}}</td>
-
-                </tr>
-                {% endfor %}
-
-            </table>
-            </table>
-        </div>
+<!-- End Add Product Modal -->
+<!-- Add Product Modal -->
+<div class="modal fade" id="addsize" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Product size</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="{% url 'product' %}">
+              {% csrf_token %}
+              {{sizeform}}
+                  <input type="submit" value="submit">
+          </form>
+      </div>
     </div>
+  </div>
 </div>
+<!-- End Add Product Modal -->
+<!-- Add Product Modal -->
+<div class="modal fade" id="addcolor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Product color</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="{% url 'product' %}">
+              {% csrf_token %}
+              {{colorform}}
+                  <input type="submit" value="submit">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Add Product Modal -->
+<!-- Add Product Modal -->
+<div class="modal fade" id="addproduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="{% url 'product' %}">
+              {% csrf_token %}
+              {{productform}}
+                  <input type="submit" value="submit">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Add Product Modal -->
 
 {% endblock %}
