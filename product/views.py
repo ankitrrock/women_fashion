@@ -85,7 +85,7 @@ def product(request):
 			messages.success(request, 'product successfully added')
 			return redirect('product')
 	context = {'tagform': tagform, 'colorform': sizeform, 'sizeform': sizeform, 'productform': productform}
-	return render(request, "product", context)
+	return render(request, "product.html", context)
 
 
 @login_required(login_url='loginPage')
