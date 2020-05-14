@@ -84,7 +84,7 @@ def product(request):
 			productform = productform.cleaned_data.get('product')
 			messages.success(request, 'product successfully added')
 			return redirect('product')
-	context = {'tagform': tagform, 'colorform': sizeform, 'sizeform': sizeform, 'productform': productform}
+	context = {'tagform': tagform, 'colorform': colorform, 'sizeform': sizeform, 'productform': productform}
 	return render(request, "product.html", context)
 
 
