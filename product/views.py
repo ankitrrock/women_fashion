@@ -16,7 +16,6 @@ def registerPage(request):
 				form.save()
 				user = form.cleaned_data.get('username')
 				messages.success(request, 'Account was created for ' + user)
-
 				return redirect('loginPage')
 			
 	context = {'form': form}
@@ -29,9 +28,7 @@ def loginPage(request):
 		if request.method == 'POST':
 			username = request.POST.get('username')
 			password = request.POST.get('password')
-
 			user = authenticate(request, username=username, password=password)
-
 			if user is not None:
 				login(request, user)
 				return redirect('dashboard')
@@ -48,8 +45,6 @@ def logoutUser(request):
 def main(request):
 	return render(request, "dashboard.html")
 
-
-# noinspection SpellCheckingInspection
 @login_required(login_url='loginPage')
 def product(request):
 	if request.method == 'POST':
@@ -59,15 +54,17 @@ def product(request):
 		productform = ProductForm(request.POST)
 
 		if tagform.is_valid():
-			newdata = tagform.save()
+			tagform.save()
+			return HttpResponseRedirect(reverse('product'))
 		if colorform.is_valid():
-			newdata = colorform.save()
+			colorform.save()
+			return HttpResponseRedirect(reverse('product'))
 		if sizeform.is_valid():
-			newdata = sizeform.save()
+			sizeform.save()
+			return HttpResponseRedirect(reverse('product'))
 		if productform.is_valid():
-			newdata = productform.save()
-
-		return HttpResponseRedirect(reverse('product'))
+			productform.save()
+			return HttpResponseRedirect(reverse('product'))
 	else:
 		tagform = TagForm()
 		colorform = ColorForm()
