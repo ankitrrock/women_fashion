@@ -85,12 +85,12 @@ def customer(request):
 
 @login_required(login_url='loginPage')
 def createOrder(request):
-	return render(request, 'orderform.html')
+	return render(request, "orderform.html")
 
 @login_required(login_url='loginPage')
 def updateOrder(request):
 
-	return render(request, 'orderform.html')\
+	return render(request, "orderform.html")
 
 @login_required(login_url='loginPage')
 def deleteOrder(request):
