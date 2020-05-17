@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.utils.timezone import now
 
 
 # Create your models here.
@@ -35,6 +36,7 @@ class Product(models.Model):
     tags = models.ManyToManyField(Tag,)
     color = models.OneToOneField(Color, on_delete=models.CASCADE)
     size = models.OneToOneField(Size, on_delete=models.CASCADE)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.name
@@ -49,6 +51,7 @@ class Order(models.Model):
     customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.product.name
