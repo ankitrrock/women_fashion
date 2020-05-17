@@ -52,25 +52,31 @@ def product(request):
 		colorform = ColorForm(request.POST)
 		sizeform = SizeForm(request.POST)
 		productform = ProductForm(request.POST)
-
-		if tagform.is_valid():
-			tagform.save()
-			return HttpResponseRedirect(reverse('product'))
-		if colorform.is_valid():
-			colorform.save()
-			return HttpResponseRedirect(reverse('product'))
-		if sizeform.is_valid():
-			sizeform.save()
-			return HttpResponseRedirect(reverse('product'))
 		if productform.is_valid():
 			productform.save()
+			messages.success(request, 'product data added')
+			return HttpResponseRedirect(reverse('product'))
+		elif colorform.is_valid():
+			colorform.save()
+			messages.success(request, 'product color added')
+			return HttpResponseRedirect(reverse('product'))
+		elif sizeform.is_valid():
+			sizeform.save()
+			messages.success(request, 'product size added')
+			return HttpResponseRedirect(reverse('product'))
+		elif tagform.is_valid():
+			tagform.save()
+			messages.success(request, 'product tag added')
+			return HttpResponseRedirect(reverse('product'))
+		else:
+			messages.success(request, 'please fill relevant data')
 			return HttpResponseRedirect(reverse('product'))
 	else:
 		tagform = TagForm()
 		colorform = ColorForm()
 		sizeform = SizeForm()
 		productform = ProductForm()
-
+	messages.success(request, 'Add the element')
 	return render(request, 'product.html', {
 		'tagform': tagform,
 		'colorform': colorform,
