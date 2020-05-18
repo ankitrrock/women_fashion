@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from appmart.forms import CreateUserForm
 from product.forms import TagForm, ColorForm, SizeForm, ProductForm
+from product.models import Product
 
 def registerPage(request):
 	if request.user.is_authenticated:
@@ -76,12 +77,15 @@ def product(request):
 		colorform = ColorForm()
 		sizeform = SizeForm()
 		productform = ProductForm()
+		data = Product.objects.all()
 	messages.success(request, 'Add the element')
 	return render(request, 'product.html', {
 		'tagform': tagform,
 		'colorform': colorform,
 		'sizeform': sizeform,
 		'productform': productform,
+		'data': data
+
 
 	})
 

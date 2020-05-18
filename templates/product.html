@@ -3,8 +3,8 @@
 {% block content %}
 <br>
 <!---- button  ----->
-<div class="container">
-  <p>messagebox</p>
+<div class="container" style="color:blue">
+  <p class="align-center">Message box</p>
   {% if messages %}
     <ul class="messages">
       {% for message in messages %}
@@ -15,17 +15,14 @@
 
 </div>
 <div class="container">
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">PRODUCT_TYPE</button>
+  <div class="row">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#form">PRODUCT_TYPE</button>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#color">PRODUCT_COLOR</button>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#size">PRODUCT_SIZE</button>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#product">ADD_PRODUCT</button>
+  </div>
 </div>
-<div class="container">
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#color">PRODUCT_COLOR</button>
-</div>
-<div class="container">
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#size">PRODUCT_SIZE</button>
-</div>
-<div class="container">
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#product">ADD_PRODUCT</button>
-</div>
+
 <!----- end button ------>
 <!--- add model 1 --->
 <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -124,4 +121,38 @@
   </div>
 </div>
 <!--- edd model 4--->
+<div class="container" style="background-color:yellow;">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Tag</th>
+      <th scope="col">Sub Tag</th>
+      <th scope="col">Price</th>
+      <th scope="col">color</th>
+      <th scope="col">Date created</th>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for prdata in data %}
+      <th scope="row">1</th>
+      <td>prdata.brand_name</td>
+      <td>prdata.tag</td>
+      <td>prdata.subtag</td>
+      <td>prdata.price</td>
+      <td>prdata.color</td>
+      <td>prdata.date_created</td>
+      <td>prdata.category</td>
+      <td><button type="button" class="btn btn-primary">Edit</button></td>
+      <td><button type="button" class="btn btn-danger">Delete</button></td>
+      {% endfor %}
+    </tr>
+    <tr>
+
+  </tbody>
+</table>
+</div>
 {% endblock %}

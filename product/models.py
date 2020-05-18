@@ -1,11 +1,14 @@
 from django.conf import settings
 from django.db import models
-from django.utils.timezone import now
-
-
 # Create your models here.
 
 class Tag(models.Model):
+    name = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.name
+class Subtag(models.Model):
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
 
     def __str__(self):
@@ -28,18 +31,19 @@ class Product(models.Model):
         ('indoor', 'indoor'),
         ('out door', 'out door'),
     )
-    name = models.CharField(max_length=200, null=True)
+    brand_name = models.CharField(max_length=200, null=True, blank=True)
+    tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True)
+    subtag = models.ForeignKey(Subtag, on_delete=models.SET_NULL, null=True)
     p_image = models.ImageField(upload_to='products', null=True, blank=True)
     price = models.FloatField(null=True, blank=True)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     description = models.CharField(max_length=200, null=True)
-    tags = models.ManyToManyField(Tag,)
     color = models.OneToOneField(Color, on_delete=models.CASCADE)
     size = models.OneToOneField(Size, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.brand_name
 
 
 class Order(models.Model):
