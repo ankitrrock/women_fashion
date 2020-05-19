@@ -121,6 +121,7 @@
   </div>
 </div>
 <!--- edd model 4--->
+<!-- start product details--->
 <div class="container" style="background-color:yellow;">
   <table class="table">
   <thead>
@@ -133,26 +134,27 @@
       <th scope="col">color</th>
       <th scope="col">Date created</th>
       <th scope="col">Category</th>
+      <th scope="col">Edit Item</th>
+      <th scope="col">Delete Item</th>
     </tr>
   </thead>
+    {% for prdata in data %}
   <tbody>
     <tr>
-      {% for prdata in data %}
-      <th scope="row">1</th>
-      <td>prdata.brand_name</td>
-      <td>prdata.tag</td>
-      <td>prdata.subtag</td>
-      <td>prdata.price</td>
-      <td>prdata.color</td>
-      <td>prdata.date_created</td>
-      <td>prdata.category</td>
-      <td><button type="button" class="btn btn-primary">Edit</button></td>
-      <td><button type="button" class="btn btn-danger">Delete</button></td>
-      {% endfor %}
+      <th scope="row">{{ prdata.id }}</th>
+      <td>{{ prdata.brand_name }}</td>
+      <td>{{ prdata.tag }}</td>
+      <td>{{ prdata.subtag }}</td>
+      <td>{{ prdata.price }}</td>
+      <td>{{ prdata.color }}</td>
+      <td>{{ prdata.date_created }}</td>
+      <td>{{ prdata.category }}</td>
+      <td><a class="btn btn-sm btn-info" href="{% url 'productedit' prdata.id %}">Update</a></td>
+      <td><a class="btn btn-sm btn-danger" href="{% url 'productdelete' prdata.id %}">Delete</a></td>
     </tr>
-    <tr>
-
   </tbody>
+    {% endfor %}
 </table>
 </div>
+<!-- End product details--->
 {% endblock %}

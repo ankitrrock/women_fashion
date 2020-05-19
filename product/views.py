@@ -105,3 +105,13 @@ def updateOrder(request):
 @login_required(login_url='loginPage')
 def deleteOrder(request):
 	return render(request, 'delete.html')
+
+@login_required(login_url='loginPage')
+def productdelete(request, pk):
+	product = Product.objects.get(id=pk)
+	product.delete()
+	return render(request, 'product.html')
+
+@login_required(login_url='loginPage')
+def productedit(request):
+	return render(request, 'delete.html')
