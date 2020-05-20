@@ -113,5 +113,14 @@ def productdelete(request, pk):
 	return render(request, 'product.html')
 
 @login_required(login_url='loginPage')
-def productedit(request):
-	return render(request, 'delete.html')
+def productedit(request, pk):
+	product = Product.objects.get(id=pk)
+	form = ProductForm(instance=product)
+	if request.method == 'POST':
+		form = ProductForm(request.POST, instance=product)
+		if form.is_valid():
+			form.save()
+			return redirect('product')
+
+	context = {'form': form, 'product': product}
+	return render(request, 'edit.html', context)
